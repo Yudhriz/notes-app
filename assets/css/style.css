@@ -1,0 +1,130 @@
+/* Reset dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Warna utama */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #f5f5f5;
+  --text-color: #333;
+}
+
+/* App Bar Styling */
+.app-bar {
+  width: 100%;
+  background: var(--primary-color);
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Container utama */
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+/* Grid untuk catatan */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dua kolom */
+  gap: 1rem;
+}
+
+.grid-container > * {
+  margin-top: 10px;
+  padding: 4px 8px;
+  border: 1px solid #333;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Tambah shadow biar elegan */
+}
+
+/* Styling untuk card */
+.note-card {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Agar konten merata */
+  min-height: 150px; /* Tentukan tinggi minimum */
+}
+
+.note-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Formulir Catatan */
+.error {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+.note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--secondary-color);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Tambahkan shadow */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Efek hover agar lebih hidup */
+.note-form:hover {
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Lebih tebal saat hover */
+}
+
+.note-form input,
+.note-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.note-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.note-form input:invalid,
+.note-form textarea:invalid {
+  border-color: red;
+}
+
+.note-form button {
+  background: var(--primary-color);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.note-form button:hover {
+  background: #0056b3;
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
