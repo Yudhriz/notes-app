@@ -1,10 +1,10 @@
 class NoteForm extends HTMLElement {
   static get observedAttributes() {
-    return ["max-title-length"];
+    return ['max-title-length'];
   }
 
   connectedCallback() {
-    const maxTitleLength = this.getAttribute("max-title-length") || 50;
+    const maxTitleLength = this.getAttribute('max-title-length') || 50;
 
     this.innerHTML = `
       <form class="note-form">
@@ -16,22 +16,23 @@ class NoteForm extends HTMLElement {
 
         <button type="submit" id="submit">Tambah Catatan</button>
       </form>
+      
     `;
 
     this.addEventListeners();
   }
 
   addEventListeners() {
-    const form = this.querySelector(".note-form");
-    const titleInput = form.elements["title"];
-    const bodyInput = form.elements["body"];
+    const form = this.querySelector('.note-form');
+    const titleInput = form.elements['title'];
+    const bodyInput = form.elements['body'];
 
-    titleInput.addEventListener("input", this.validateField);
-    titleInput.addEventListener("blur", this.validateField);
-    bodyInput.addEventListener("input", this.validateField);
-    bodyInput.addEventListener("blur", this.validateField);
+    titleInput.addEventListener('input', this.validateField);
+    titleInput.addEventListener('blur', this.validateField);
+    bodyInput.addEventListener('input', this.validateField);
+    bodyInput.addEventListener('blur', this.validateField);
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener('submit', (event) => {
       event.preventDefault();
       const isValid = form.checkValidity();
       if (!isValid) {
@@ -40,7 +41,7 @@ class NoteForm extends HTMLElement {
         return;
       }
 
-      const noteAddedEvent = new CustomEvent("note-added", {
+      const noteAddedEvent = new CustomEvent('note-added', {
         detail: {
           title: titleInput.value.trim(),
           body: bodyInput.value.trim(),
@@ -57,18 +58,18 @@ class NoteForm extends HTMLElement {
   validateField(event) {
     const field = event.target;
     const errorElement = document.getElementById(
-      field.getAttribute("aria-describedby")
+      field.getAttribute('aria-describedby'),
     );
 
-    field.setCustomValidity("");
+    field.setCustomValidity('');
 
     if (!field.value.trim()) {
-      field.setCustomValidity("Wajib diisi.");
+      field.setCustomValidity('Wajib diisi.');
     } else if (field.validity.tooShort) {
       field.setCustomValidity(
-        field.name === "title"
-          ? "Judul minimal 3 karakter."
-          : "Isi catatan minimal 10 karakter."
+        field.name === 'title'
+          ? 'Judul minimal 3 karakter.'
+          : 'Isi catatan minimal 10 karakter.',
       );
     }
 
@@ -76,4 +77,4 @@ class NoteForm extends HTMLElement {
   }
 }
 
-customElements.define("note-form", NoteForm);
+customElements.define('note-form', NoteForm);
